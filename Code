@@ -1,0 +1,23 @@
+import os
+bids = {}
+bidding_finished = False
+def find_highest_bidding(bidding_records):
+    highest_bid = 0
+    winners = ""
+    for bidders in bidding_records:
+        bid_amount = bidding_records[bidders]
+        if bid_amount > highest_bid:
+            highest_bid = bid_amount
+            winner = bidders
+    print(f"the winner of bid is {winner} with bid of ${highest_bid}")
+        
+while not bidding_finished:
+    name = input("Enter your name: ")
+    price = int(input("Enter your bid: $"))
+    bids[name] = price
+    should_continue = input("Are any others bidders: Type 'yes' or 'no'")
+    if should_continue == "no":
+      bidding_finished = True
+      find_highest_bidding(bids)
+    elif should_continue == "yes":
+      os.system('cls')
